@@ -1,11 +1,12 @@
-server:
-  port: 8888
-
 spring:
+  application:
+    name: config-server
   profiles:
     active: native
   cloud:
     config:
       server:
         native:
-          search-locations: file:///C:/Users/buck/Napplee/Clone/config-repo
+          search-locations: file:/config-repo
+server:
+  port: 8888
