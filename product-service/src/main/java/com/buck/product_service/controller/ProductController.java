@@ -26,6 +26,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
+        System.out.println("📥 [PRODUCT-SERVICE] Received request to /api/products");
         return ResponseEntity.ok(productService.getAllProducts());
     }
 

@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  product-service:
+    build:
+      context: ./product-service
+    container_name: product-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+      - config-server
+    environment:
+      - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true

@@ -11,11 +11,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+
+        System.out.println("D");
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers("/api/auth/**").permitAll() // Cho phép truy cập mà không cần login
-                        .anyExchange().authenticated()            // Các route khác cần authentication
+                        //.pathMatchers("/api/**").permitAll() // Cho phép truy cập mà không cần login
+                        .anyExchange().permitAll()         // Các route khác cần authentication
                 )
                 .build();
     }
